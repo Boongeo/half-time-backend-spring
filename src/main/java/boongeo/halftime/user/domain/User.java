@@ -1,7 +1,11 @@
 package boongeo.halftime.user.domain;
 
 import boongeo.halftime.auth.domain.Account;
+import lombok.Builder;
+import lombok.Getter;
 
+@Getter
+@Builder
 public class User {
 
 	private Long id;

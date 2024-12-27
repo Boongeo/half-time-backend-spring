@@ -1,7 +1,8 @@
 package boongeo.halftime.user.infrastructure.entity;
 
-import boongeo.halftime.auth.infrastructure.AccountEntity;
+import boongeo.halftime.auth.infrastructure.entity.AccountEntity;
 import boongeo.halftime.common.infrastructure.entity.BaseEntity;
+import boongeo.halftime.user.domain.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -24,6 +25,15 @@ public class UserEntity extends BaseEntity {
 
 	@OneToOne(mappedBy = "user")
 	private AccountEntity account;
+
+	public User toModel() {
+		return User.builder()
+			.id(id)
+			.profileImage(profileImage)
+			.nickname(nickname)
+			.account(account.toModel())
+			.build();
+	}
 
 
 }
